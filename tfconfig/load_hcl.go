@@ -173,6 +173,7 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 						panic(fmt.Errorf("failed to re-parse default value from JSON: %s", err))
 					}
 					v.Default = def
+					v.DefaultJson = string(valJSON)
 				}
 			} else {
 				v.Required = true
