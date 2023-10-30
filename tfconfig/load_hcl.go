@@ -174,9 +174,14 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 					}
 					v.Default = def
 					v.DefaultJson = string(valJSON)
+					rng := attr.Expr.Range()
+					v.DefaultHcl = string(rng.SliceBytes(file.Bytes))
 				}
 			} else {
 				v.Required = true
+				v.Default = nil
+				v.DefaultJson = "null"
+				v.DefaultHcl = "null"
 			}
 
 			if attr, defined := content.Attributes["sensitive"]; defined {

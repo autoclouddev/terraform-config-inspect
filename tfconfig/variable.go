@@ -15,6 +15,7 @@ type Variable struct {
 	// serialized by json.Marshal will be included here.
 	Default     interface{} `json:"default"`
 	DefaultJson string      `json:"default_json"`
+	DefaultHcl  string      `json:"default_hcl"`
 	Required    bool        `json:"required"`
 	Sensitive   bool        `json:"sensitive,omitempty"`
 
